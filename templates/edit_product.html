@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sửa sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h1>✏️ Sửa sản phẩm</h1>
+
+    <form method="POST">
+
+    <!-- CSRF TOKEN -->
+        <input type="hidden"
+            name="csrf_token"
+            value="{{ csrf_token() }}">
+
+        <div class="mb-3">
+            <label>Tên sản phẩm</label>
+            <input type="text"
+                 name="name"
+                value="{{ product[1] }}"
+                class="form-control"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label>Giá</label>
+            <input type="number"
+                 name="price"
+                 value="{{ product[2] }}"
+                class="form-control"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label>Mô tả</label>
+            <input type="text"
+                 name="description"
+                value="{{ product[3] }}"
+                class="form-control"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label>Ảnh</label>
+            <input type="text"
+                name="image"
+                value="{{ product[4] }}"
+                class="form-control"
+                required>
+        </div>
+
+        <button type="submit" class="btn btn-warning w-100">
+            Cập nhật
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
