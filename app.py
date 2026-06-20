@@ -8,14 +8,15 @@ from flask_limiter.util import get_remote_address
 
 import sqlite3
 import random
-
+import os
+from dotenv import load_dotenv
 from security import hash_password
 
 app = Flask(__name__)
-
+load_dotenv()
 bcrypt = Bcrypt(app)
 
-app.secret_key = "baomat123"
+app.secret_key = os.getenv("SECRET_KEY")
 
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
@@ -37,8 +38,8 @@ def generate_otp():
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'tanit9phen@gmail.com'
-app.config['MAIL_PASSWORD'] = 'vpunhpcexeiunmyf'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 
 mail = Mail(app)
 
